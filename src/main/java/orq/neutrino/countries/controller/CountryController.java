@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import orq.neutrino.countries.domain.CountryJson;
+import orq.neutrino.countries.domain.Country;
 import orq.neutrino.countries.service.CountryService;
 
 @RestController
@@ -28,25 +28,25 @@ public class CountryController {
 
   @GetMapping
   @Nonnull
-  List<CountryJson> getAll() {
+  List<Country> getAll() {
     return countryService.all();
   }
 
   @GetMapping("/{code}")
   @Nonnull
-  public CountryJson findByCode(@PathVariable("code") String code) {
+  public Country findByCode(@PathVariable("code") String code) {
     return countryService.findByCode(code);
   }
 
   @PatchMapping("/{code}")
-  public CountryJson editNameByCode(@PathVariable("code") String code, @RequestBody String name) {
+  public Country editNameByCode(@PathVariable("code") String code, @RequestBody String name) {
     return countryService.editNameByCode(code, name);
   }
 
   @PostMapping
   @Nonnull
   @ResponseStatus(HttpStatus.CREATED)
-  public CountryJson save(@RequestBody CountryJson country) {
+  public Country save(@RequestBody Country country) {
     return countryService.save(country);
   }
 }

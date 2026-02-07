@@ -1,0 +1,20 @@
+type Query {
+    country(code: String!): Country!
+    countries: [Country!]
+}
+
+type Mutation {
+    addCountry(input: CountryInput!): Country!
+}
+
+type Country {
+    id: ID!
+    name: String
+    code: String!
+}
+
+input CountryInput {
+    name: String
+    code: String!
+}
+

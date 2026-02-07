@@ -1,6 +1,9 @@
 spring:
   application:
     name: countries
+  graphql:
+    graphiql:
+      enabled: true
   jackson:
     serialization:
       INDENT_OUTPUT: true

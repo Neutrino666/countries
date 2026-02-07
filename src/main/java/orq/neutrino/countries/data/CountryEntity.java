@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
-import orq.neutrino.countries.domain.CountryJson;
+import orq.neutrino.countries.domain.Country;
 
 @Entity
 @Getter
@@ -61,7 +61,7 @@ public class CountryEntity {
         .getPersistentClass().hashCode() : getClass().hashCode();
   }
 
-  public static CountryEntity fronJson(CountryJson country) {
+  public static CountryEntity fromJson(Country country) {
     CountryEntity ce = new CountryEntity();
     ce.setId(country.id());
     ce.setCode(country.code());

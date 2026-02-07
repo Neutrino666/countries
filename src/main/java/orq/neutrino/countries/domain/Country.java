@@ -5,12 +5,12 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import orq.neutrino.countries.data.CountryEntity;
 
 @ParametersAreNonnullByDefault
-public record CountryJson(UUID id,
-                          String name,
-                          String code) {
+public record Country(UUID id,
+                      String name,
+                      String code) {
 
-  public static CountryJson fromEntity(CountryEntity entity) {
-    return new CountryJson(
+  public static Country fromEntity(CountryEntity entity) {
+    return new Country(
         entity.getId(),
         entity.getName(),
         entity.getCode()
