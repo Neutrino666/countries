@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import orq.neutrino.countries.data.CountryEntity;
 import orq.neutrino.countries.data.CountryRepository;
@@ -38,18 +40,16 @@ public class DbCountryService implements CountryService {
 
   @Nonnull
   @Override
-  public List<CountryGql> allGql() {
+  public Page<CountryGql> allGql(Pageable pageable) {
     return countryRepository
-        .findAll()
-        .stream()
+        .findAll(pageable)
         .map(c ->
             new CountryGql(
                 c.getId(),
                 c.getName(),
                 c.getCode()
             )
-        )
-        .toList();
+        );
   }
 
   @Override

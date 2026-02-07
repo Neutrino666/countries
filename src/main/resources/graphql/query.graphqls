@@ -1,6 +1,6 @@
 type Query {
     country(code: String!): Country!
-    countries: [Country!]
+    countries(page: Int, size: Int): CountryConnection
 }
 
 type Mutation {
