@@ -43,13 +43,7 @@ public class DbCountryService implements CountryService {
   public Page<CountryGql> allGql(Pageable pageable) {
     return countryRepository
         .findAll(pageable)
-        .map(c ->
-            new CountryGql(
-                c.getId(),
-                c.getName(),
-                c.getCode()
-            )
-        );
+        .map(CountryGql::fromEntity);
   }
 
   @Override
