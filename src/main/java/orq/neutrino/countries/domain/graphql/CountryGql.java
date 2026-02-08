@@ -9,11 +9,11 @@ public record CountryGql(UUID id,
                          String name,
                          String code) {
 
-  public static CountryGql fromEntity(CountryEntity cj) {
+  public static CountryGql fromEntity(CountryEntity ce) {
     return new CountryGql(
-        cj.getId(),
-        cj.getName(),
-        cj.getCode()
+        ce.getId(),
+        ce.getName(),
+        ce.getCode()
     );
   }
 }
