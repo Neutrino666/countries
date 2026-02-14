@@ -19,6 +19,9 @@ public interface CountryService {
   Slice<CountryGql> allGql(Pageable pageable);
 
   @Nonnull
+  List<CountryGql> allGql();
+
+  @Nonnull
   Country findByCode(String code);
 
   @Nonnull

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package orq.neutrino.countries;
+
+option java_multiple_files = true;
+option java_package = "orq.neutrino.countries";
+option java_outer_classname = "CountryProto";
+
+service CountryService {
+  rpc AddStreamCountries(stream CountryRequest) returns(AddedCountResponse) {}
+  rpc GetAll(google.protobuf.Empty) returns (stream CountryResponse) {}
+  rpc FindByCode(CodeRequest) returns (CountryResponse) {}
+  rpc Save(CountryRequest) returns (CountryResponse) {}
+}
+
+message CodeRequest {
+  string code = 1;
+}
+
+message CountryRequest {
+  string name = 1;
+  string code = 2;
+}
+
+message AddedCountResponse {
+  uint32 count = 1;
+}
+
+message CountryResponse {
+  string id = 1;
+  string name = 2;
+  string code = 3;
+}

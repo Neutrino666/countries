@@ -46,6 +46,21 @@ public class DbCountryService implements CountryService {
         .map(CountryGql::fromEntity);
   }
 
+  @Nonnull
+  @Override
+  public List<CountryGql> allGql() {
+    return countryRepository
+        .findAll()
+        .stream()
+        .map(fe ->
+            new CountryGql(
+                fe.getId(),
+                fe.getName(),
+                fe.getCode()
+            ))
+        .toList();
+  }
+
   @Override
   @Nonnull
   public Country findByCode(String code) {
@@ -74,6 +89,7 @@ public class DbCountryService implements CountryService {
     return Country.fromEntity(countryRepository.save(CountryEntity.fromJson(country)));
   }
 
+  @Nonnull
   @Override
   public CountryGql saveGql(CountryInputGql input) {
     checkCode(input.code());
