@@ -3,20 +3,33 @@ package orq.neutrino.countries.service;
 import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import orq.neutrino.countries.domain.CountryJson;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import orq.neutrino.countries.domain.Country;
+import orq.neutrino.countries.domain.graphql.CountryGql;
+import orq.neutrino.countries.domain.graphql.CountryInputGql;
 
 @ParametersAreNonnullByDefault
 public interface CountryService {
 
   @Nonnull
-  List<CountryJson> all();
+  List<Country> all();
 
   @Nonnull
-  CountryJson findByCode(String code);
+  Slice<CountryGql> allGql(Pageable pageable);
 
   @Nonnull
-  CountryJson save(CountryJson country);
+  Country findByCode(String code);
 
   @Nonnull
-  CountryJson editNameByCode(String code, String name);
+  CountryGql findByCodeGql(String code);
+
+  @Nonnull
+  Country save(Country country);
+
+  @Nonnull
+  CountryGql saveGql(CountryInputGql input);
+
+  @Nonnull
+  Country editNameByCode(String code, String name);
 }

@@ -2,7 +2,7 @@ buildscript {
     ext {
         lombokVersion = '1.18.42'
         postgresVersion = '42.7.7'
-        flywayVersion = '11.13.1'
+        flywayVersion = '11.20.0'
         junitVersion = '6.0.0'
         spotbugsVersion = '4.9.8'
     }
@@ -10,8 +10,8 @@ buildscript {
 
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.5.10'
-	id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.springframework.boot' version '3.5.9'
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
 group = 'orq.neutrino'
@@ -31,6 +31,9 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.data:spring-data-commons'
+    implementation 'org.springframework.boot:spring-boot-starter-graphql'
+    implementation 'com.tailrocks.graphql:graphql-datetime-spring-boot-starter:6.0.0'
     runtimeOnly "org.postgresql:postgresql:${postgresVersion}"
     implementation "org.flywaydb:flyway-core:${flywayVersion}"
     implementation "org.flywaydb:flyway-database-postgresql:${flywayVersion}"
