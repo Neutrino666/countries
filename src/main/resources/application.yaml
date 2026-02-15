@@ -1,4 +1,8 @@
 spring:
+  grpc:
+    server:
+      servlet:
+        enabled: false
   application:
     name: countries
   graphql:
@@ -37,6 +41,5 @@ spring:
     show-sql: false
     generate-ddl: true
     open-in-view: false
-
 server:
   port: 8282
