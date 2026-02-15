@@ -11,7 +11,7 @@ option java_outer_classname = "CountryProto";
 
 service CountryService {
   rpc AddStreamCountries(stream CountryRequest) returns(AddedCountResponse) {}
-  rpc GetAll(google.protobuf.Empty) returns (stream CountryResponse) {}
+  rpc ListCountries(google.protobuf.Empty) returns (stream CountryResponse) {}
   rpc FindByCode(CodeRequest) returns (CountryResponse) {}
   rpc Save(CountryRequest) returns (CountryResponse) {}
 }

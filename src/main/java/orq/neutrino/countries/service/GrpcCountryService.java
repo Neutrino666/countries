@@ -21,7 +21,7 @@ public class GrpcCountryService extends CountryServiceGrpc.CountryServiceImplBas
   }
 
   @Override
-  public void getAll(Empty request, StreamObserver<CountryResponse> responseObserver) {
+  public void listCountries(Empty request, StreamObserver<CountryResponse> responseObserver) {
     countryService.allGql()
         .forEach(country -> setOnNextCountryResponseFromGql(country, responseObserver));
     responseObserver.onCompleted();
